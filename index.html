@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Halaman resmi DPK GmnI Akuntansi Universitas La Tansa Mashiro - Pemikir Pemikir Pejuang!">
+  <title>Linktree DPK GmnI Akuntansi Universitas La Tansa Mashiro |  Pemikir Pemikir Pejuang!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="assets/styles.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-content">
+      <div class="loading-spinner"></div>
+      <h2 class="loading-text animate__animated animate__fadeIn">Mohon tunggu sebentar...</h2>
+    </div>
+  </div>
+
+      <!-- Audio untuk musik background -->
+    <audio id="background-music" loop autoplay>
+        <source src="assets/backsound/mars.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Marquee -->
+  <div class="marquee-container animate__animated animate__fadeInDown">
+    <div class="marquee-text">
+      ✨ Selamat datang di halaman resmi DPK GmnI Akuntansi Universitas La Tansa Mashiro • #salampemikirpemikirpejuang ✨
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container animate__animated animate__fadeIn">
+    <div class="profile-container">
+      <img src="assets/img/profile.jpg" alt="Foto Syahdan Frahira" class="profile">
+    </div>
+    <h1>DPK GmnI Akuntansi & FKIP</h1>
+    <div class="jam-widget" id="jamSekarang"></div>
+    <p>Universitas La Tansa Mashiro</p>
+
+    <!-- Social Icons -->
+    <div class="social-icons">
+      <a href="https://www.instagram.com/gmni_ak_fkip_unilam" class="social-icon" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="mailto:dpkgmniakuntansiunilam@gmail.com" class="social-icon" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://wa.me/6285882218063" class="social-icon" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
+
+<!-- Links -->
+    <div class="links-container">
+      <a href="https://tiktok.com/dpk.gmni.akuntansi" class="link-button">
+        <i class="fab fa-tiktok"></i> Tiktok
+      </a>
+      <a href="https://www.instagram.com/gmni_ak_fkip_unilam" class="link-button" target="_blank">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+      <a href="mailto:dpkgmniakuntansiunilam@gmail.com" class="link-button">
+        <i class="fas fa-envelope"></i> Hubungi Saya
+      </a>
+      <a href="https://chat.whatsapp.com/LbMMV3CbWGNBwuCfBlH8Ev" class="link-button">
+        <i class="fas fa-users"></i> Gabung menjadi Kader GmnI
+      </a>
+        <a href="https://chat.whatsapp.com/LbMMV3CbWGNBwuCfBlH8Ev" class="link-button" onclick="showHOSTlert(event)">
+        <i class="fas fa-folder"></i> Dokumentasi Kegiatan
+      </a>
+    </div>
+  </div>
+
+  <!-- Add this to your HTML (can be at the bottom of body) -->
+    <div id="customContextMenu" class="custom-context-menu">
+        <div class="context-menu-item" onclick="window.location.reload()">
+            <i class="fas fa-sync-alt"></i> Refresh
+        </div>
+        <div class="context-menu-item" onclick="navigateTo('https://www.instagram.com/gmni_ak_fkip_unilam')">
+            <i class="fab fa-instagram"></i> Instagram
+        </div>
+        <div class="context-menu-item" onclick="navigateTo('mailto:dpkgmniakuntansiunilam@gmail.com')">
+            <i class="fas fa-envelope"></i> Email Kami
+        </div>
+        <div class="context-menu-divider"></div>
+        <div class="context-menu-item" onclick="copyPageUrl()">
+            <i class="fas fa-link"></i> Salin Link
+        </div>
+        <div class="context-menu-item" onclick="openInNewTab()">
+            <i class="fas fa-external-link-alt"></i> Buka Tab Baru
+        </div>
+        <div class="context-menu-divider"></div>
+        <div class="context-menu-item" onclick="showAbout()">
+            <i class="fas fa-info-circle"></i> Tentang
+        </div>
+    </div>
+
+  <footer>
+    <p>&copy; 2025 DPK GmnI Akuntansi & FKIP Unilam <br> All rights reserved.</p>
+  </footer>
+
+  <!-- Chatbot -->
+
+  <script>
+    // Loading Screen
+    window.addEventListener('load', function() {
+      setTimeout(() => {
+        document.getElementById('loadingScreen').classList.add('hidden');
+        setTimeout(showWelcome, 500);
+      }, 1800);
+    });
+
+    // Add this to your existing JavaScript
+        const customContextMenu = document.getElementById('customContextMenu');
+        
+        // Disable default context menu
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            showCustomMenu(e);
+        });
+        
+        // Close menu when clicking elsewhere
+        document.addEventListener('click', () => {
+            customContextMenu.classList.remove('visible');
+        });
+        
+        function showCustomMenu(e) {
+            // Position the menu
+            const x = e.clientX;
+            const y = e.clientY;
+            
+            // Ensure menu stays within viewport
+            const menuWidth = customContextMenu.offsetWidth;
+            const menuHeight = customContextMenu.offsetHeight;
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            
+            let adjustedX = x;
+            let adjustedY = y;
+            
+            if (x + menuWidth > windowWidth) {
+                adjustedX = windowWidth - menuWidth - 5;
+            }
+            
+            if (y + menuHeight > windowHeight) {
+                adjustedY = windowHeight - menuHeight - 5;
+            }
+            
+            customContextMenu.style.left = `${adjustedX}px`;
+            customContextMenu.style.top = `${adjustedY}px`;
+            customContextMenu.classList.add('visible');
+        }
+        
+        // Menu item functions
+        function navigateTo(url) {
+            window.location.href = url;
+            customContextMenu.classList.remove('visible');
+        }
+        
+        function copyPageUrl() {
+            navigator.clipboard.writeText(window.location.href)
+                .then(() => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Link disalin!',
+                        text: 'URL halaman ini telah disalin ke clipboard',
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                })
+                .catch(err => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal menyalin',
+                        text: 'Tidak dapat menyalin URL: ' + err
+                    });
+                });
+            customContextMenu.classList.remove('visible');
+        }
+        
+        function openInNewTab() {
+            window.open(window.location.href, '_blank');
+            customContextMenu.classList.remove('visible');
+        }
+        
+        function showAbout() {
+            Swal.fire({
+                title: 'Tentang Halaman Ini',
+                html: '<b>DPK GmnI Akuntasi & FKIP Unilam</b><br>Salam Pemikir Pemikir Pejuang!<br><br>© 2025 All Rights Reserved',
+                confirmButtonText: 'Tutup'
+            });
+            customContextMenu.classList.remove('visible');
+        }
+
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', newTheme);
+      
+      // Update icon with animation
+      const icon = themeToggle.querySelector('i');
+      icon.classList.add('animate__animated', 'animate__flip');
+      setTimeout(() => {
+        icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        icon.classList.remove('animate__flip');
+      }, 300);
+      
+      // Save preference
+      localStorage.setItem('theme', newTheme);
+    });
+
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+    themeToggle.querySelector('i').className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+
+    // Welcome Alert
+    function showWelcome() {
+      Swal.fire({
+        title: '👋 Selamat Datang!',
+        html: '<b>Terima kasih sudah mengunjungi halaman <span style="color:var(--primary)">DPK GmnI Akuntansi & FKIP</span>.</b><br><br>Di sini Anda bisa menemukan Informasi dan Akun DPK GmnI Akuntansi & FKIP Unilam dalam satu tempat yang mudah diakses.',
+        imageUrl: 'assets/img/profile.jpg',
+        imageWidth: 100,
+        imageHeight: 100,
+        background: 'var(--card)',
+        color: 'var(--text)',
+        confirmButtonText: 'Mulai Jelajahi',
+        confirmButtonColor: 'var(--primary)',
+        showClass: { popup: 'animate__animated animate__fadeInDown' },
+        hideClass: { popup: 'animate__animated animate__fadeOutUp' },
+        width: '90%',
+        padding: '1.5rem',
+        customClass: {
+          popup: 'responsive-popup'
+        },
+        didClose: () => {
+          setTimeout(showPengawasAlert, 1000);
+        }
+      });
+    }
+
+    // Pengawas Alert
+    function showPengawasAlert() {
+      Swal.fire({
+        icon: 'info',
+        title: '🛡️ Pengawasan Aktif',
+        html: 'Untuk keamanan dan kenyamanan Anda, web ini dilindungi oleh <b>sistem pengawas AI</b> canggih yang siap membantu 24/7.',
+        confirmButtonText: 'Mengerti',
+        confirmButtonColor: 'var(--primary)',
+        background: 'var(--card)',
+        color: 'var(--text)',
+        width: '90%',
+        customClass: {
+          popup: 'responsive-popup'
+        }
+      });
+    }
+
+    // TP Alert
+    function showHOSTlert(event) {
+      event.preventDefault();
+      Swal.fire({
+        icon: 'info',
+        title: '🚀 Halaman Segera Hadir',
+        html: 'Halaman Dokumentasi</b> sedang dalam tahap pengembangan akhir. Nantikan kehadirannya dalam waktu dekat!',
+        confirmButtonText: 'Tunggu ya!',
+        confirmButtonColor: 'var(--primary)'
+      });
+    }
+
+        // NOVEL Alert
+    function showNOVELlert(event) {
+      event.preventDefault();
+      Swal.fire({
+        icon: 'info',
+        title: '🤖 Sedang Disempurnakan',
+        html: 'Halaman Novel sedang dalam tahap penyempurnaan akhir untuk memberikan pengalaman terbaik',
+        confirmButtonText: 'Tunggu ya!',
+        confirmButtonColor: 'var(--primary)'
+      });
+    }
+
+    // AI Alert
+    function showAIAlert(event) {
+      event.preventDefault();
+      Swal.fire({
+        icon: 'info',
+        title: '🤖 Sedang Disempurnakan',
+        html: 'Syahdan AI sedang dalam tahap penyempurnaan akhir untuk memberikan pengalaman terbaik. <b>Coming Soon!</b>',
+        confirmButtonText: 'Siap Menunggu',
+        confirmButtonColor: 'var(--primary)'
+      });
+    }
+
+    // Chatbot Toggle
+    function toggleChatbot() {
+      const panel = document.getElementById('chatbotPanel');
+      panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+      
+      // Close when clicking outside
+      if (panel.style.display === 'block') {
+        document.addEventListener('click', closeChatbotOnClickOutside);
+      } else {
+        document.removeEventListener('click', closeChatbotOnClickOutside);
+      }
+    }
+
+    function closeChatbotOnClickOutside(event) {
+      const panel = document.getElementById('chatbotPanel');
+      const button = document.querySelector('.chatbot-button');
+      
+      if (!panel.contains(event.target) && event.target !== button) {
+        panel.style.display = 'none';
+        document.removeEventListener('click', closeChatbotOnClickOutside);
+      }
+    }
+
+    // Time Widget
+    function updateJam() {
+      const now = new Date();
+      const waktu = now.toLocaleTimeString('id-ID', {
+        timeZone: 'Asia/Jakarta',
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit',
+        hour12: false
+      });
+      const hari = now.toLocaleDateString('id-ID', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      });
+      
+      document.getElementById('jamSekarang').innerHTML = 
+        `<i class="fas fa-clock"></i> ${hari} <br> Jam: <span style="font-weight:700">${waktu} WIB</span>`;
+    }
+
+    setInterval(updateJam, 1000);
+    updateJam();
+
+    // Add animation on scroll
+    document.addEventListener('DOMContentLoaded', () => {
+      const elements = document.querySelectorAll('.container, .marquee-container');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      elements.forEach(el => observer.observe(el));
+    });
+
+    // Add ripple effect to buttons
+    document.querySelectorAll('.link-button, .chatbot-panel button').forEach(button => {
+      button.addEventListener('click', function(e) {
+        const x = e.clientX - e.target.getBoundingClientRect().left;
+        const y = e.clientY - e.target.getBoundingClientRect().top;
+        
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+          ripple.remove();
+        }, 1000);
+      });
+    });
+  </script>
+</body>
+</html>
