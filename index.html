@@ -330,6 +330,13 @@
       }
     }
 
+      const audio = document.getElementById('background-music');
+  // Aktifkan musik setelah user klik di mana saja
+  document.addEventListener('click', () => {
+    audio.muted = false;
+    audio.play();
+  });
+
     // Time Widget
     function updateJam() {
       const now = new Date();
